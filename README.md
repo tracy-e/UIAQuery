@@ -7,6 +7,6 @@ UIAQuery for UI Automation Test Scripts.
 
 var target = UITarget.localTarget();
 target.findOne("TextField=Username").setValue("admin");
-target.findOne("TextField=Password").setValue("value");
+target.findOne("TextField=Password").setValue("123456");
 target.findOne("Button#Login").tap();
 ```
