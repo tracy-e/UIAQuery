@@ -2,7 +2,7 @@
 
 UIAQuery for UI Automation Test Scripts.
 
-```
+```javascript
 #import "UIAQuery.js"
 
 var target = UITarget.localTarget();
