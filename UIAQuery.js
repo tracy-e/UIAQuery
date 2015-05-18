@@ -133,7 +133,6 @@ function test(title, fun) {
 		UIALogger.logPass(title);
 	} catch (e) {
 		UIALogger.logError(e.toString());
-		// UIALogger.logError(e.stack);
 		UIALogger.logFail(title);
 	}
 }
