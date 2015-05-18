@@ -124,6 +124,86 @@ function sync(fun) {
 	target.popTimeout();
 }
 
+function test(title, fun) {
+	var target = UIATarget.localTarget();
+	var app = target.frontMostApp();
+	UIALogger.logStart(title);
+	try {
+		fun(target, app);
+		UIALogger.logPass(title);
+	} catch (e) {
+		UIALogger.logError(e.toString());
+		// UIALogger.logError(e.stack);
+		UIALogger.logFail(title);
+	}
+}
+
+// ****************************************************************************
+// Assertions
+function _FailureException(message) {
+	this.name = "FailureException";
+	this.message = message;
+	this.toString = function() {
+		return this.name + ': "' + this.message + '"';
+	};
+}
+
+function _AssertionException(message) {
+	this.name = "AssertionException";
+	this.message = message;
+	this.toString = function() {
+		return this.name + ': "' + this.message + '"';
+	};
+}
+
+function assert(message) {
+	throw new _AssertionException(message);
+}
+
+function fail(message) {
+	throw new _FailureException(message);
+}
+
+function assertNull(expression, message) {
+	var defaultMessage = "Expected a null object, but received <" + expression + ">";
+	assertTrue(expression === null || expression.toString() == "[object UIAElementNil]", 
+		message ? message + ": " + defaultMessage: defaultMessage);
+}
+
+function assertNotNull (expression, message) {
+	var defaultMessage = "Expected not null object";
+	assertTrue(expression !== null && expression.toString() != "[object UIAElementNil]",
+		message ? message + ": " + defaultMessage: defaultMessage);
+}
+
+function assertTrue(expression, message) {
+	if (!expression) {
+		if (!message) {
+			message = "Assertion failed";
+		}
+		throw new _AssertionException(message);
+	}
+}
+
+function assertFalse(expression, message) {
+	if (expression) {
+		if (!message) {
+			message = "Assertion failed";
+		}
+		throw new _AssertionException(message);
+	}
+}
+
+function assertEqual(expression1, expression2, message) {
+	var defaultMessage = "Expected <" + expression1 + "> but received <" + expression2 + ">";
+	assertTrue(expression1 == expression2, message ? message + ": " + defaultMessage : defaultMessage);
+}
+
+function assertNotEqual(expression1, expression2, message) {
+	var defaultMessage = "Expected not <" + expression1 + "> but received <" + expression2 + ">";
+	assertTrue(expression1 !== expression2, message ? message + ": " + defaultMessage : defaultMessage);
+}
+
 // ****************************************************************************
 // UIATarget extensions
 extend(UIATarget.prototype, {
