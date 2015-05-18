@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface UICatalog_Tests : XCTestCase
+@interface UICatalogTests : XCTestCase
 
 @end
 
-@implementation UICatalog_Tests
+@implementation UICatalogTests
 
 - (void)setUp {
     [super setUp];
@@ -22,12 +22,22 @@
     
 }
 
-#pragma mark - <#Section#>
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testExample {
+    XCTAssertEqual(1, 1);
+}
+
+- (void)testExample1 {
+    // Given
     
-    XCTAssertEqual(<#expression1#>, <#expression2, ...#>)
+    // When
+    
+    // Then
+    XCTAssertTrue(YES);
 }
 
 - (void)testPerformanceExample {
