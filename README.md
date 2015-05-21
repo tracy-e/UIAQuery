@@ -6,7 +6,7 @@ UIAQuery for UI Automation Test Scripts.
 
 Find Element(s) by Accessibility Attributes  
 
-```
+```javascript
 #import "UIAQuery.js"
 
 UIAQuery.findOne("TextField=Username").setValue("admin");
@@ -22,7 +22,7 @@ tableView.findOne("Cell#Settings").tap();
 
 Test case for better organization and logs.
 
-```
+```javascript
 test("Example", function() {
     //...
     assertTrue(true, "Pass");
