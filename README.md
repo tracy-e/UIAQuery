@@ -12,7 +12,7 @@ Find Element(s) by Accessibility Attributes
 UIAQuery.findOne("TextField=Username").setValue("admin");
 var cells = UIAQuery.find("TableCell");
 
-// UIQuery find() and findOne() are extended to UIATarget and UIAElement.
+// UIAQuery find() and findOne() are extended to UIATarget and UIAElement.
 var target = UITarget.localTarget();
 target.findOne("Button#Add").tap();
 tableView.findOne("Cell#Settings").tap();
